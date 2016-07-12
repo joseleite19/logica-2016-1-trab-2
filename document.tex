@@ -1,0 +1,62 @@
+\documentclass[a4paper,final,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[english,brazil]{babel}
+%\usepackage{mathbbol}
+\usepackage{amssymb,amsfonts}
+\usepackage{layouts}
+\usepackage[top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\usepackage[alf,bibjustif]{abntex2cite}
+\usepackage{indentfirst}
+\usepackage{url}
+\baselineskip=18pt
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{24pt}
+
+\title{Experiências com provador de teoremas}
+\author{José Marcos da Silva Leite}
+
+\begin{document}
+	\maketitle
+	
+	\section{Lógica Proposicional}
+	\subsection{Sintaxe}
+	\indent Chamemos um conjunto enumerável $P = \{p, q, r, ..., p_{1}, q_{1}, ...\}$ de \textbf{símbolos proposicionais}. \\
+	\indent Chamemos o conjunto $O = \{\lnot, \land, \lor, \to, \leftrightarrow \}$ de \textbf{operadores proposicionais}. \\
+	\indent Chamemos o conjunto $S = \{(, )\}$ de \textbf{sinais de pontuação}. \\
+	\indent Uma \textbf{fórmula proposicional} é qualquer sequência finita de $P \cup O \cup S$. \\
+	\indent Definimos o conjunto de \textbf{Fórmulas Bem Formadas} $FBF_{LP}$ recursivamente:
+	\begin{enumerate}
+		\item se $\varphi \in P$, então $\varphi \in FBF_{LP}$
+		\item se $\varphi \in FBF_{LP}$, então $\lnot\varphi \in FBF_{LP}$
+		\item se $\varphi \in FPF_{LP}$ e $\psi \in FPF_{LP}$ e $* \in O \setminus \{\lnot\}$, então $(\varphi * \psi) \in FBF_{LP},$
+	\end{enumerate}
+
+	\subsection{Semântica}
+	Definimos uma função $\mathbb{V}_{0} : P \to \{V, F\}$. \\
+	\indent Definimos uma função $\mathbb{V} : FBF_{LP} \to \{V, F\}$:
+	\begin{enumerate}
+		\item $\mathbb{V}(\varphi) = \mathbb{V}_{0}(\varphi)$, se $\varphi \in P$
+		\item $\mathbb{V}(\lnot\varphi) = V$, somente se, $\mathbb{V}(\varphi) = F$
+		\item $\mathbb{V}(\varphi \land \psi)$, somente se, $\mathbb{V}(\varphi) = V$ e $\mathbb{V}(\psi) = V$
+		\item $\mathbb{V}(\varphi \lor \psi)$, somente se, $\mathbb{V}(\varphi) = V$ ou $\mathbb{V}(\psi) = V$
+		\item $\mathbb{V}(\varphi \to \psi) = V$, somente se, $\mathbb{V}(\varphi) = F$ ou $\mathbb{V}(\psi) = V$
+		\item $\mathbb{V}(\varphi \leftrightarrow \psi) = V$, somente se, $\mathbb{V}(\varphi) = \mathbb{V}(\psi)$
+	\end{enumerate}
+	
+	Se existe uma valoração $\mathbb{V} : FBF_{LP} \to \{V, F\}$ tal que $\mathbb{V}(\varphi) = V$, então $\varphi$ é \textbf{satisfatível}. Se não existe, $\varphi$ é \textbf{insatisfatível}.
+	\subsection{Resolução}
+	Um \textbf{literal} é um simbolo proposicional ou sua negação. \\
+	\indent Uma \textbf{cláusula} é uma disjunção de literais. \\
+	\indent Uma fórmula está na \textbf{Forma Normal Conjuntiva}(ou \textbf{FNC}) somente se esta for uma conjunção de cláusulas. \\
+	\indent Uma \textbf{regra de inferência} é uma forma de obtenção de formulas a partir de um conjunto de fórmulas.
+	
+	\section{Automação de prova de teoremas}
+	\subsection{POVO QUE INVENTOU}
+	\subsection{KSP}
+	
+	\section{Resultados}
+	\section{Conclusão}
+	
+\end{document}
